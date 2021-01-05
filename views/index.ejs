@@ -1,29 +1,60 @@
 <%- include("partials/headers") -%>
 <link rel="stylesheet" href="./css/indexs.css">
-
+<link rel="stylesheet" href="./aos-master/dist/aos.css" />
+<script src="./aos-master/dist/aos.js"></script> 
+<script>
+  AOS.init();
+</script>
  <div id="flex">
-     <div id="leftbox">
+
+     <div id="box1">
        <img src="./img/cloud.jpg" alt="" height="100%" width="100%" >
      </div>
 
-   <!--  <div id="rightbox">
-         <div class="intro">
-            <h2 align="center"> WELCOME TO </h2> <h1 align="center" style="font-size: 48px;">GPT</h1> 
-         </div>
-         <div class="aim" align="center">
-             <ul>
-                 <li> <h1> WHY GPT?</h1></li>
-                 <li> <h2>Keep Track of your records an performance</h2> </li>
-                 <li> <h2>secured storage </h2>  </li>
-                 <li> <h2> cloud is the future</h2> </li>
+     <div data-aos="fade-up" data-aos-duration="900" data-aos-delay="300" class="intro">
+         <h1 align="center"> PROBLEM </h1>
+         <div align="center"> <img src="./img/why.png" height="40px" width="40px"></div>
+             
+         <div class="content">
+          <div class="centerPcView">
+            <div>
+              <ul>
+                <li> Having troubles keeping track of your school records ? </li>
+                <li>Have you been storing your school results in a not so secure system ?</li>
+                <li> We figured out most students keep their redults in written form .</li>
              </ul>
 
-             <div align="center" > 
-                 <form action="" method="get">
-                   <button id="btn" type="submit"> Get started </button>
-               </form>
+              <h3> This should not be in our current era of development </h3>
+              <h3> everything should be more </h3>
+
+              <ul>
+                  <li>secure</li>
+                  <li> and easily accessible </li>
+              </ul>
             </div>
-         </div>
+          </div>
+            
+        </div>
+
      </div>
- </div>-->
+
+     <div class="intro" data-aos="fade-up" data-aos-duration="900" data-aos-delay="7000">
+      <h1 align="center"> SOLUTION </h1>
+      <div align="center"> <img src="./img/sol.png" height="40px" width="40px"></div>
+      <div class="content">
+       <div class="centerPcView">
+         <ul>
+          <li> Now you have a secure online storage </li>
+          <li> Now you can access your records remotely and fast.</li>
+          <li> What are you waiting for ?</li>
+          <br>
+        <h3 align="center"> why not  <a href="/signup" style="color: aquamarine;"> signup</a> and get started</h3>
+        </ul>
+        
+       </div>
+        
+      </div>
+     </div>
+
+  
 <%- include("partials/footers") -%>
