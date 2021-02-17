@@ -1,6 +1,7 @@
 *{
     padding:0px;
     margin:0px;
+    box-sizing: border-box;
 }
 
 body{
@@ -13,49 +14,39 @@ body{
     background-color: rgba(4, 8, 14, 0.829);
 }
 
-nav{
-    line-height: 30px;
-    padding: 18px;
-}
-
-h3{
-    color: orange;
-}
-
-nav ul h3{
-    margin-left: 20px;
-    margin-right: 20px;
-    display: inline-block;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#right{
-    display: inline-block;
-    float: right;
-    padding-right: 10px;
-}
-
-#left{
-    background-color: gold;
-    color: red;
-}
 a{
     color:orange;
     text-decoration: none;
 }
 
-#right{
-    color: blue;
+.nav{
+    background-color: rgb(43, 41, 41);
+    display: flex;
+    justify-content: space-between;
+    color: orange;
+    padding: 4px 8px;
+    
 }
+.nav *{
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.home{
+    font-size: 20px;
+}
+
+.menu{
+    display: flex;
+}
+.menu li, .home li{
+    list-style: none;
+    padding-left: 15px;
+}
+.menu li a{
+    font-size: 20px;
+}
+
 
 #footer{
     background-color: orange;
-}
-
-@media only screen and (max-width:400px){
-    nav ul h3{
-        margin-left: 6px;
-        margin-right: 2px;
-        font-size:14px;
-    }
 }

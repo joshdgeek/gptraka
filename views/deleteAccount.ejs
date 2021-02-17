@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/password.css">
+    <title>Document</title>
+</head>
+<body style="background-color: blueviolet;">
+    <div id="container">
+        <form>
+            <h2>Change Password</h2>
+        
+            <label for="email">Old Password</label>
+            <input type="text" name="oldPassword" required autocomplete="off"/>
+            <div class="oldPasswordErr" style="color: red;"></div>
+            <label for="password">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" required /> 
+
+            <button type="button" onclick="togglePassword()">show password</button>
+            
+            <div class="newPasswordErr" style="color: rgb(15, 78, 136);"></div>
+            <button>update password</button>
+        </form>
+        
+    </div>
+    
+</body>
+</html>
+
+<script>
+    let form = document.querySelector("form");
+    form.addEventListener("submit", async function(e){
+        e.preventDefault();
+        
+        try {
+            let oldPasswordErr = document.querySelector(".oldPasswordErr")
+            let newPasswordErr = document.querySelector(".newPasswordErr")
+            let oldPassword =await form.oldPassword.value;
+            let newPassword =await  form.newPassword.value;
+            
+            let newData =await fetch("/api/password/josh",{
+                method:"PATCH",
+                body: JSON.stringify({oldPassword,newPassword}),
+                headers:{"Content-Type":"application/json"}
+            })
+            
+
+            const data = await newData.json();
+            if(data.err){
+                oldPasswordErr.innerHTML = data.err
+                newPasswordErr.innerHTML = " "
+            }
+            else if(data.success){
+                newPasswordErr.innerHTML = data.success + `<b><a href="/main"> click me</a></b>`
+                oldPasswordErr.innerHTML = " "
+            }
+            console.log(data)
+
+        } catch (error) {
+            console.log(error)
+            
+        }
+    })
+
+</script>

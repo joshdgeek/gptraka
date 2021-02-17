@@ -1,2 +1,10 @@
 GET http://localhost:3000/api
 
+###
+PUT http://localhost:3000/api/test
+Content-Type: application/json
+
+{
+    "oldP":"test12",
+    "newP": "test322"
+}

@@ -1,19 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 #container{
- margin:3px;   
- min-height: 100vh;
+    padding:3px;   
+    background-color: black;
+    min-height: 100vh;
+    width: 100vw;
 }
 
 .entry{
     color: white;
     min-height: 400px;
-    min-width: 300px;
+    width: 100vw;
 }
 
 label{
-margin-bottom: 12px;
-font-size: 20px;
-font-weight: 800;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 800;
 }
+
 input{
     margin-bottom: 12px;
 }
@@ -46,17 +53,21 @@ li{
 
 table{
     margin-top: 10px;
-    width: 70%;
-    
+    min-width: 70%;
+    border-collapse: collapse;
 }
 .tableTitle{
     background-color: rgba(85, 250, 9, 0.333);
     color:rgb(218, 203, 190);
 }
+tr{
+    border-bottom: 1px solid orange;
+}
 td{
     text-align: center;
-    padding: 4px;
+    padding: 7px;
 }
+
 
 .btn{
     padding:4px;
@@ -65,10 +76,18 @@ td{
 }
 
 @media only screen and (min-width:300px){
-.centertable{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .centertable{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
+
+footer{
+    position:fixed;
+    bottom:0px;
+    height: 40px;
+    background-color:orange;
+    width:100vw;
 }

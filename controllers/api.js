@@ -27,34 +27,35 @@ app.get("/:name",async function(req,res){
 
 
 // api to change password
-app.put("/:name",async function(req,res){
-    const {oldP,newP} = req.body;
+app.patch("/password/:name",async function(req,res){
+    const {oldPassword,newPassword} = req.body;
     let user;
 
     user = await User.findOne({name:req.params.name});
     if(user){
-        const auth = await bcrypt.compare(oldP,user.password);
+        const auth = await bcrypt.compare(oldPassword,user.password);
 
         //check if password is valid
         if(auth){
-            user.password = newP;
+            user.password = newPassword;
         }
         else{
-            return res.send("no")
+            return res.json({err:"wrong password"})
         }
         //password validation break point
     }
     else{
-        res.json({err:"user no tfound"})
+        res.json({err:"user not found"})
     }
     try {
         const use = await user.save();
-        res.json(use)
+        res.json({success:"password changed sucessfully , please go back"})
         
     } catch (err) {
         res.json({Err:err.message})
     }
 })
+
 
 
 

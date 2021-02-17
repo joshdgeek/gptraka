@@ -124,3 +124,11 @@ module.exports.edit = async(req,res)=>{
   }
 
 } 
+
+module.exports.password=(req,res)=>{
+  res.render("changePassword")
+}
+
+module.exports.deleteAccount=(req,res)=>{
+  res.render("deleteAccount")
+}
