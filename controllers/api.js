@@ -27,11 +27,11 @@ app.get("/:name",async function(req,res){
 
 
 // api to change password
-app.patch("/password/:name",async function(req,res){
+app.patch("/password/",async function(req,res){
     const {oldPassword,newPassword} = req.body;
     let user;
 
-    user = await User.findOne({name:req.params.name});
+    user = await User.findOne({name:req.cookies.name});
     if(user){
         const auth = await bcrypt.compare(oldPassword,user.password);
 
@@ -52,32 +52,37 @@ app.patch("/password/:name",async function(req,res){
         res.json({success:"password changed sucessfully , please go back"})
         
     } catch (err) {
-        res.json({Err:err.message})
-    }
-})
-
-
-
-
-//delete 
-app.delete("/:name", async function(req,res){
- const users = await User.findOneAndDelete({name:req.params.name});
- res.send(users.name)
-})
-
-async function gg(req,res,next){
-    let sub;
-
-    try {
-        sub = await User.findOne({name:req.params.name});
-        if(user==null){
-            return res.json({errr:"user doesnt exist"})
-        }
-    } catch (err) {
+        res.json({newPasswordErr:err.message})
         console.log(err.message)
     }
-    res.sub = sub
-    next();
-}
+})
+
+
+
+app.delete("/delete/:name",async(req,res)=>{
+    const user = await User.findOne({name:req.params.name})
+    let {email,password} = req.body
+    try {
+        //verify email before delete
+        if(user.email === email){
+
+            //verify password if email exists
+            const auth = await bcrypt.compare(password,user.password);
+            if(auth){
+                await user.remove()
+                return res.json({deleteStatus:"user deleted"})
+            }else{
+                return res.json({passwordErr:"wrong password"})
+            }
+        }else{
+            return res.json({emailErr:"wrong email"})
+        }
+
+    } catch (error) {
+        return res.json({err:"could not delete"})
+    }
+})
+
+
 
 module.exports = app;

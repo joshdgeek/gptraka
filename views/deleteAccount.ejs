@@ -11,18 +11,19 @@
 <body style="background-color: blueviolet;">
     <div id="container">
         <form>
-            <h2>Change Password</h2>
+            <h2>DELETE ACCOUNT</h2>
         
-            <label for="email">Old Password</label>
-            <input type="text" name="oldPassword" required autocomplete="off"/>
+            <label for="email">Email</label>
+            <input type="text" name="email" required autocomplete="off"/>
             <div class="oldPasswordErr" style="color: red;"></div>
-            <label for="password">New Password</label>
-            <input type="password" id="newPassword" name="newPassword" required /> 
+
+            <label for="password">Password</label>
+            <input type="password"  name="newPassword" required /> 
 
             <button type="button" onclick="togglePassword()">show password</button>
             
             <div class="newPasswordErr" style="color: rgb(15, 78, 136);"></div>
-            <button>update password</button>
+            <button>Delete Account</button>
         </form>
         
     </div>
