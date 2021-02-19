@@ -15,19 +15,16 @@
         
             <label for="email">Email</label>
             <input type="text" name="email" required autocomplete="off"/>
-            <div class="oldPasswordErr" style="color: red;"></div>
+            <div class="emailErr" style="color: red;"></div>
 
             <label for="password">Password</label>
-            <input type="password"  name="newPassword" required /> 
-
+            <input type="password" id="password" name="password" required /> 
+            <div class="passwordErr" style="color: rgb(15, 78, 136);"></div>
             <button type="button" onclick="togglePassword()">show password</button>
-            
-            <div class="newPasswordErr" style="color: rgb(15, 78, 136);"></div>
             <button>Delete Account</button>
         </form>
         
     </div>
-    
 </body>
 </html>
 
@@ -37,27 +34,35 @@
         e.preventDefault();
         
         try {
-            let oldPasswordErr = document.querySelector(".oldPasswordErr")
-            let newPasswordErr = document.querySelector(".newPasswordErr")
-            let oldPassword =await form.oldPassword.value;
-            let newPassword =await  form.newPassword.value;
+            let emailErr = document.querySelector(".emailErr")
+            let passwordErr = document.querySelector(".passwordErr")
+            let email =await form.email.value;
+            let password =await  form.password.value;
             
-            let newData =await fetch("/api/password/josh",{
-                method:"PATCH",
-                body: JSON.stringify({oldPassword,newPassword}),
+            let deleteUser =await fetch("/api/delete",{
+                method:"DELETE",
+                body: JSON.stringify({email,password}),
                 headers:{"Content-Type":"application/json"}
             })
             
 
-            const data = await newData.json();
-            if(data.err){
-                oldPasswordErr.innerHTML = data.err
-                newPasswordErr.innerHTML = " "
+            const data = await deleteUser.json();
+            if(data.emailErr){
+                emailErr.innerHTML = data.emailErr
+                passwordErr.innerHTML = " "
             }
-            else if(data.success){
-                newPasswordErr.innerHTML = data.success + `<b><a href="/main"> click me</a></b>`
-                oldPasswordErr.innerHTML = " "
+            else if(data.passwordErr){
+                passwordErr.style.color = "red"
+                passwordErr.innerHTML = data.passwordErr;
+                emailErr.innerHTML = " "
             }
+            else if(data.deleteStatus){
+                passwordErr.style.color = "rgb(57, 245, 57)"
+                passwordErr.innerHTML = data.deleteStatus + `  <b><a href="/">leave the app </b></a>`
+                emailErr.innerHTML = " "
+
+            }
+            
             console.log(data)
 
         } catch (error) {
@@ -66,4 +71,21 @@
         }
     })
 
+</script>
+
+
+<script>
+    let tog = 0
+    let item = document.querySelector("#password")
+    function togglePassword(){
+        if (tog === 0){
+            item.setAttribute("type", "text")
+            tog = 1
+        }
+        else if(tog === 1){
+            item.setAttribute("type","password")
+            tog = 0
+        }
+
+    }
 </script>

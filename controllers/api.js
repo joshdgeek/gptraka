@@ -7,16 +7,18 @@ const app =  Router()
 app.get("/",async function(req,res){
     try {
         const user = await User.find({})
+        console.log(user.length)
         res.json(user)
+        
     } catch (error) {
         res.send(error.message)
     }
 })
 
-//create
+//Get user by name
 app.get("/:name",async function(req,res){
     try {
-        let user = await User.findOne({name:req.params.name});
+        let user = await User.findOne({name:req.cookie.name});
         res.json(user)
         return user;
     } catch (error) {
@@ -59,27 +61,30 @@ app.patch("/password/",async function(req,res){
 
 
 
-app.delete("/delete/:name",async(req,res)=>{
-    const user = await User.findOne({name:req.params.name})
-    let {email,password} = req.body
+//deletes a user
+app.delete("/delete/",async(req,res)=>{
     try {
+        const user = await User.findOne({name:req.cookies.name})
+        let {email,password} = req.body
         //verify email before delete
-        if(user.email === email){
+        if(user.email == email){
 
             //verify password if email exists
             const auth = await bcrypt.compare(password,user.password);
             if(auth){
-                await user.remove()
-                return res.json({deleteStatus:"user deleted"})
+                await user.remove() //delete user
+                res.cookie("jwt","",{maxAge:1})
+                res.cookie("name","",{maxAge:1})
+                res.json({deleteStatus:"user deleted"})
             }else{
-                return res.json({passwordErr:"wrong password"})
+                 res.json({passwordErr:"wrong password"})
             }
         }else{
-            return res.json({emailErr:"wrong email"})
+             res.json({emailErr:"wrong email"})
         }
 
     } catch (error) {
-        return res.json({err:"could not delete"})
+         res.json({err:"could not delete"})
     }
 })
 

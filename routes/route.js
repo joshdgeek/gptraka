@@ -17,8 +17,8 @@ app.get("/main",requireAuth,dataControllers.main)
 app.post("/main",dataControllers.addData)
 
 app.post("/edit/", dataControllers.edit)
-app.get("/changePass",dataControllers.password)
-app.get("/deleteAccount",dataControllers.deleteAccount)
+app.get("/changePass",requireAuth,dataControllers.password)
+app.get("/deleteAccount",requireAuth,dataControllers.deleteAccount)
 
 app.get("/logout",authControllers.logout)
 module.exports = app
