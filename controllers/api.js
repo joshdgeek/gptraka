@@ -7,7 +7,7 @@ const app =  Router()
 app.get("/",async function(req,res){
     try {
         const user = await User.find({})
-        console.log(user.length)
+       // console.log(user.length)
         res.json(user)
         
     } catch (error) {
@@ -55,7 +55,7 @@ app.patch("/password/",async function(req,res){
         
     } catch (err) {
         res.json({newPasswordErr:err.message})
-        console.log(err.message)
+        //console.log(err.message)
     }
 })
 
