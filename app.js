@@ -11,7 +11,7 @@ app.use(express.static("public"))
 app.use(express.json())
 
 //mongodb connection
-let dbUrl = "mongodb://localhost:27017/GPT"
+let dbUrl = "mongodb+srv://GPT:GPTracker@gpt-cluster.qib51.mongodb.net/test"
 mongoose.connect(dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true,useFindAndModify: false})
 const db = mongoose.connection;
 db.on("error",(err)=> console.log(err))
