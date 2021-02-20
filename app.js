@@ -1,3 +1,5 @@
+require("dotenv").config()
+const PORT = process.env.PORT || 3000
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
@@ -26,6 +28,6 @@ app.get("/",(req,res)=>{
 //other routes
 app.use(route)
 app.use("/api",apiroutes)
-app.listen(3000,console.log("server connected"))
+app.listen(PORT,console.log("server connected"))
 
  
