@@ -1,7 +1,7 @@
 let { Router } = require("express");
 let app = Router();
 const {requireAuth,permit} = require("../middleware/authMiddleware.js")
-let authControllers = require("../Controllers/authController")
+let authControllers = require("../controllers/authController")
 let dataControllers = require("../Controllers/dataController")
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");

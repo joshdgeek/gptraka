@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
-const route  = require("./routes/route")
+const route  = require("./routes/route.js")
 const apiroutes = require("./controllers/api")
 app.set("view engine","ejs")
 app.use(bodyParser.urlencoded({extended:true}))
