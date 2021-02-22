@@ -57,6 +57,7 @@
                 emailErr.innerHTML = " "
             }
             else if(data.deleteStatus){
+                alert(data.deleteStatus)
                 passwordErr.style.color = "rgb(57, 245, 57)"
                 passwordErr.innerHTML = data.deleteStatus + `  <b><a href="/">leave the app </b></a>`
                 emailErr.innerHTML = " "
