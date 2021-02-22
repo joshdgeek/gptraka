@@ -23,7 +23,7 @@ for (let i=0;i<=btn.length;i++){
         let units = unit[i].innerHTML;
 
        
-        alert(i)
+        alert(item)
 
         try {
             let items = form.courses.value;

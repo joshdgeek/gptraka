@@ -8,9 +8,10 @@
     <input type="text" name="email" required autocomplete="off"/>
     <div class="emailerr"></div>
     <label for="password">Password</label>
-    <input type="password" name="password" required />
+    <input type="password" id="newPassword" name="password" required />
     <div class="passworderr"></div>
-    <button>Sign up</button>
+    <button type="button" onclick="togglePassword()">show password</button>
+    <button>log in</button>
 </form>
 
 <script>
@@ -47,6 +48,7 @@
 
  
 </script>
+<script src="./js/togglePassword.js"></script>
  
 
 <%- include("partials/footers") -%>
