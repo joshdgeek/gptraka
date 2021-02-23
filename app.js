@@ -13,8 +13,8 @@ app.use(express.static("public"))
 app.use(express.json())
 
 //mongodb connection
-let dbUrl = "mongodb+srv://gpt-cluster.qib51.mongodb.net/user"
-mongoose.connect(dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true,useFindAndModify: false})
+let dbUrl = "mongodb+srv://GPT:GPT322.@gptraka.qib51.mongodb.net/users?retryWrites=true&w=majority"
+mongoose.connect(process.env.MONGODB_URI || dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true,useFindAndModify: false})
 const db = mongoose.connection;
 db.on("error",(err)=> console.log(err))
 db.once("open",()=> console.log("mongodb opened"))
