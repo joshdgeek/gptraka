@@ -13,7 +13,7 @@ app.use(express.static("public"))
 app.use(express.json())
 
 //mongodb connection
-let dbUrl = "mongodb+srv://GPT:GPT322.@gptraka.qib51.mongodb.net/users?retryWrites=true&w=majority"
+let dbUrl = "mongodb+srv://GPT:GPT322.@gptraka.qib51.mongodb.net/user?retryWrites=true&w=majority"
 mongoose.connect(process.env.MONGODB_URI || dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true,useFindAndModify: false})
 const db = mongoose.connection;
 db.on("error",(err)=> console.log(err))
