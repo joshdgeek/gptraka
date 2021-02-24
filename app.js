@@ -12,9 +12,9 @@ app.use(bodyParser.json())
 app.use(express.static("public"))
 app.use(express.json())
 
-//mongodb connection
+//mongodb connection mongodb+srv://gptAdmin:gpt322@cluster0.2civd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 let dbUrl = "mongodb://localhost:27017/gpt"
-mongoose.connect(process.env.MONGODB_URI || dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true,useFindAndModify: false})
+mongoose.connect( dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true})
 const db = mongoose.connection;
 db.on("error",(err)=> console.log(err))
 db.once("open",()=> console.log("mongodb opened"))
