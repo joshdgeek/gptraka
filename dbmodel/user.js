@@ -21,7 +21,6 @@ let userSchema = new mongoose.Schema({
 
     list:{
         lowercase:true,
-        unique:false,
         type:[String]
     },
     points:{

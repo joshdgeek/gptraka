@@ -12,8 +12,8 @@ app.use(bodyParser.json())
 app.use(express.static("public"))
 app.use(express.json())
 
-//mongodb connection mongodb+srv://gptAdmin:gpt322@cluster0.2civd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-let dbUrl = "mongodb://localhost:27017/gpt"
+//mongodb connection mongodb://localhost:27017/gpt
+let dbUrl = "mongodb+srv://gptAdmin:gpt322@cluster0.2civd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect( dbUrl,{useNewUrlParser:true ,useUnifiedTopology:true , useCreateIndex:true})
 const db = mongoose.connection;
 db.on("error",(err)=> console.log(err))
