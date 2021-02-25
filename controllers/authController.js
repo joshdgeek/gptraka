@@ -4,32 +4,33 @@ const jwt = require("jsonwebtoken")
 //const { findOneAndRemove } = require("../dbmodel/user")
 
 function handleError(err){
-      console.log(err.message,err.code)
-      let errors = {email:"", password:""}
+  console.log(err.message,err.code)
+  let errors = {email:"", password:"",username:""}
 
-      //already creeated user
+  //already creeated user
 
-      if(err.code===11000){
-        console.log(err.message)
-        errors["email"] = "user exists"
-     }
+  if(err.code===11000){
+      console.log(err.message)
+      errors["email"] = "user exists"
+  }
 
-     if(err.message.includes("user validation failed")){
-        Object.values(err.errors).forEach(({properties})=>{
-        errors[properties.path] = properties.message
-       })
-     }
+  if(err.message.includes("user validation failed")){
+    Object.values(err.errors).forEach(({properties})=>{
+      errors[properties.path] = properties.message
+    })
+  }
 
-      //login post
-      if(err.message === "incorrect email"){
-        errors["email"] = err.message
-      }
+  //login post
+  if(err.message === "incorrect email"){
+    errors["email"] = err.message
+  }
 
-      if(err.message === "incorrect password"){
-        errors["password"] = err.message
-      }
+  if(err.message === "incorrect password"){
+    errors["password"] = err.message
+  }
 
-      return errors
+
+  return errors
 }
 
 
