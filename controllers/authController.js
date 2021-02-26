@@ -53,8 +53,8 @@ let {name,email,password} = req.body;
     try {
     let user  = await User.create({name,email,password})
     const token = createToken(user._id)
-    res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge})
-    res.cookie("name",user.name,{httpOnly:true,maxAge:maxAge})
+    res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*100000})
+    res.cookie("name",user.name,{httpOnly:true,maxAge:maxAge*100000})
     res.status(200);
     return res.json({user:user._id})
    
@@ -80,8 +80,8 @@ module.exports.login_post = async (req, res) => {
   try {
     const user = await User.login(email,password);
     const token = createToken(User._id)
-    res.cookie("jwt",token,{maxAge:maxAge*1000})
-    res.cookie("name",user.name,{maxAge:maxAge*1000})
+    res.cookie("jwt",token,{maxAge:maxAge*1000000})
+    res.cookie("name",user.name,{maxAge:maxAge*1000000})
     res.status(200);
     res.json({user:user._id})
     
