@@ -5,13 +5,13 @@ const jwt = require("jsonwebtoken")
 
 function handleError(err){
   console.log(err.message,err.code)
-  let errors = {email:"", password:"",username:""}
+  let errors = {email:"", password:"",name:""}
 
   //already creeated user
 
   if(err.code===11000){
       console.log(err.message)
-      errors["email"] = "user exists"
+      errors["email"] = "user exists or username has been taken"
   }
 
   if(err.message.includes("user validation failed")){
@@ -27,6 +27,9 @@ function handleError(err){
 
   if(err.message === "incorrect password"){
     errors["password"] = err.message
+  }
+  if(err.name === "incorrect password"){
+    errors["name"] = err.message
   }
 
 
@@ -52,7 +55,7 @@ module.exports.signup_post= async (req,res)=>{
 let {name,email,password} = req.body;
 
     try {
-    let user  = await User.create({name,email,password})
+    let user  = await User.create({name:name,email,password})
     const token = createToken(user._id)
     res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*100000})
     res.cookie("name",user.name,{httpOnly:true,maxAge:maxAge*100000})
