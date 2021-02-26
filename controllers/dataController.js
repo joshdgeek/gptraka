@@ -47,10 +47,11 @@ module.exports.main= async (req,res)=>{
     
       //console.log(userList)
       res.render("main",{
-          courses:userList,
-           units:userUnits,
-            points:userPoint,
-            gradeA:A,gradeB:B,gradeC:C,gradeD:D,gradeE:E})  
+        name:fetchUser.name,
+        courses:userList,
+        units:userUnits,
+        points:userPoint,
+        gradeA:A,gradeB:B,gradeC:C,gradeD:D,gradeE:E})  
     } 
  catch(error){
      console.log(error)
@@ -62,10 +63,11 @@ module.exports.main= async (req,res)=>{
 module.exports.addData = async (req,res)=>{
 
 const {courses,unit,gradePoint} = req.body;
+
 try {
   
   const dataList = await User.findOneAndUpdate({name:req.cookies.name},{
-    $addToSet:{
+    $push:{
       list:courses
     }
   })

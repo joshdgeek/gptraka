@@ -1,9 +1,10 @@
 <%- include("partials/headers") -%>
 <link rel="stylesheet" href="./css/form.css">
 
-<form action="/signup">
+<form action="/signup" method="POST">
     <h2>Sign up</h2>
-    <label for="">name</label>
+    <label for=""><b>Username</b></label>
+    <p for=""style="color: red;">*Username must be unique in order to be registered</p>
     <input type="text" name="name" autocomplete="off">
     <label for="email">Email</label>
     <input type="text" name="email" required autocomplete="off" />
