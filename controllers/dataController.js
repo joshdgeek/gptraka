@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const User = require("../dbmodel/user")
 const jwt = require("jsonwebtoken")
+const quotes = require("../library/eduQuotes.js")
 
 
 module.exports.main= async (req,res)=>{
@@ -47,6 +48,7 @@ module.exports.main= async (req,res)=>{
     
       //console.log(userList)
       res.render("main",{
+        quotes:quotes(),
         name:fetchUser.name,
         courses:userList,
         units:userUnits,

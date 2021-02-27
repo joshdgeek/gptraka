@@ -30,6 +30,10 @@ let userSchema = new mongoose.Schema({
     units:{
         unique:false,
         type:[Number]
+    },
+    date:{
+        type: Date,
+        unique:false
     }
 
 })

@@ -11,6 +11,12 @@
     <script src="./js/edit.js" defer></script>
     <script src="./js/main.js" defer></script>
     <title>GP-TRAKA</title>
+    <script >
+        function welcome(){
+           alert("hello, save your data in order of semesters")
+        }
+       // window.setTimeout(welcome,2000)
+    </script>
 </head>
 <body>
     
@@ -44,7 +50,11 @@
 
         <div class="entry">
             <h3 style="font-family: Arial, Helvetica, sans-serif;color:skyblue;margin:5px 0px;">Welcome <%= name %> </h3>
-            <p style="color:rgb(0, 204, 255);">please add the courses in order of their semesters to avoid confusion</p>
+
+            <div style="color:rgb(0, 204, 255);font-family: cursive;width:70%;word-wrap: break-word;">
+                <%= quotes %>
+            </div>
+
             <form  method="POST">
             <label for="">course</label> <br>
             <input type="text"  name="courses" autocomplete="off" required> <br>
@@ -54,6 +64,7 @@
 
             <label for="">score</label> <br>
             <input type="numbers" name="gradePoint" autocomplete="off" required> <br>
+            
             
             <button id="button" type="submit">submit</button>
             </form>
@@ -129,10 +140,11 @@
         
         </div>   
     </div>
+    </div>
 
     <footer>
         <div align="center">
-          <h3>we travel</h3>
+          <h2 style="font-family: arial;">Joshdgeek</h2>
         </div>
     </footer>   
 

@@ -2,21 +2,25 @@
     margin: 0px;
     padding: 0px;
 }
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
 #container{
     position: relative;
-    padding:3px;   
+    padding:5px 0px  ;   
     background-color: black;
     min-height: 100vh;
-    width: 100vw;
-    margin-bottom: 30px;
+    min-width: 100vw;
+    text-overflow: clip;
 }
 
 .entry{
     color: white;
     min-height: 400px;
     width: 100vw;
-    padding-left: 7px;
-    padding-top: 8px;
+    padding:5px 0px 50x 5px;
 }
 
 label{
@@ -59,6 +63,7 @@ table{
     margin-top: 10px;
     min-width: 70%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 .tableTitle{
     background-color: rgba(85, 250, 9, 0.333);
@@ -89,7 +94,8 @@ td{
 }
 
 footer{
-    position:fixed;
+    position:relative;
+    
     bottom:0px;
     height: 30px;
     background-color:orange;

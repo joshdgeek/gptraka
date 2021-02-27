@@ -52,10 +52,10 @@ module.exports.signup_get=(req,res)=>{
 //signup process
 module.exports.signup_post= async (req,res)=>{
 
-let {name,email,password} = req.body;
+let {name,email,password,file} = req.body;
 
     try {
-    let user  = await User.create({name:name,email,password})
+    let user  = await User.create({name,email,password,date:new Date().toISOString(),file})
     const token = createToken(user._id)
     res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*100000})
     res.cookie("name",user.name,{httpOnly:true,maxAge:maxAge*100000})
